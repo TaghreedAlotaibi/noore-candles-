@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>وهج — شموع معطّرة بصبّ يدوي</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=El+Messiri:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--card:#fff;--ink:#26332e;--mut:#5f6b66;--line:#e3e7e3;--flame:#3d6652;--onacc:#fff;--sage:#3d6652;--hero:#f1f5f1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px;height:auto}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.8 "IBM Plex Sans Arabic",system-ui,sans-serif}
+h1,h2,h3,.logo{font-family:"El Messiri",serif;font-weight:700;line-height:1.3}
+button{font:inherit;cursor:pointer;color:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--flame);outline-offset:2px}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--bg);color:var(--ink);padding-top:env(safe-area-inset-top,0px)}
+header{border-bottom:1px solid var(--line)}header .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.logo{font-size:26px;margin-inline-end:auto}
+header nav{display:flex;gap:22px;font-size:15px}
+header nav a:hover{color:var(--flame)}
+.cartbtn{background:var(--flame);color:var(--onacc);border:0;border-radius:99px;padding:6px 16px;font-weight:600}
+.hero{background:linear-gradient(#fff,var(--hero) 85%,#fff);color:var(--ink);padding:64px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(34px,6vw,60px)}
+.hero p{max-width:30em;margin:16px 0 26px;color:var(--mut)}
+.btn{display:inline-block;background:var(--flame);color:var(--onacc);border:0;border-radius:10px;padding:12px 24px;font-weight:600}
+.btn.ghost{background:none;color:inherit;border:1.5px solid currentColor;margin-inline-start:10px}
+.stage{display:flex;justify-content:center;align-items:flex-end;min-height:340px}
+.big{position:relative;width:150px;height:200px;background:linear-gradient(90deg,#d8c3a8,#f1e3cf 40%,#cdb392);border-radius:10px 10px 6px 6px;box-shadow:0 0 70px 16px rgba(232,170,80,.2)}
+.big:before{content:"";position:absolute;top:-4px;inset-inline:0;height:14px;border-radius:50%;background:#bfa583}
+.wick{position:absolute;top:-30px;left:50%;width:3px;height:26px;background:#2b1a33;transform:translateX(-50%)}
+.flame{position:absolute;top:-92px;left:50%;width:30px;height:62px;margin-left:-15px;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 75%,#fff6c9 0,#ffc65c 38%,#ee8a1f 75%);transform-origin:50% 100%;animation:fl 2.4s ease-in-out infinite;filter:blur(.4px)}
+@keyframes fl{0%,100%{transform:scale(1,1) rotate(-2deg)}35%{transform:scale(.94,1.07) rotate(2deg)}70%{transform:scale(1.04,.96) rotate(-1deg)}}
+.lbl{position:absolute;inset:50px 14px auto;text-align:center;font:700 22px "El Messiri";color:#4a2f36}
+section{padding:64px 0}
+h2{font-size:clamp(26px,4vw,38px);margin-bottom:8px}
+.sub{color:var(--mut);margin-bottom:28px;max-width:38em}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{border:1.5px solid var(--line);background:var(--card);border-radius:99px;padding:5px 16px;font-size:15px}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:20px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.p .pic{height:190px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:26px}
+.p .b{padding:14px 16px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.p h3{font-size:19px}
+.p small{color:var(--mut)}
+.p .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px}
+.price{font-weight:600}
+.add{border:1.5px solid var(--ink);background:none;border-radius:8px;padding:3px 14px}
+.add:hover{background:var(--ink);color:var(--bg)}
+.mini{width:62px;border-radius:6px 6px 3px 3px;position:relative;box-shadow:inset -10px 0 14px rgba(0,0,0,.12)}
+.mini:before{content:"";position:absolute;top:-3px;inset-inline:0;height:7px;border-radius:50%;background:rgba(0,0,0,.18)}
+.mini:after{content:"";position:absolute;top:-14px;left:50%;width:2px;height:11px;background:#2b1a33}
+.gift{background:var(--hero);color:var(--ink)}
+.gift .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gift h2,.gift .sub{grid-column:1/-1}.gift .sub{color:var(--mut)}
+.gi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.gi h3{font-size:20px;color:var(--flame)}.gi p{color:var(--mut);font-size:15px}
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.story p{margin-bottom:14px;color:var(--mut)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.stats b{display:block;font:700 28px "El Messiri";color:var(--sage)}
+.rev{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev blockquote{background:var(--card);border-inline-start:4px solid var(--flame);padding:16px 18px;border-radius:8px}
+.rev cite{display:block;margin-top:8px;font-style:normal;color:var(--mut);font-size:14px}
+footer{background:var(--hero);color:var(--mut);padding:36px 0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.ov{position:fixed;inset:0;background:rgba(10,5,14,.55);z-index:40;opacity:0;pointer-events:none;transition:opacity .25s}
+.ov.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(430px,100%);background:var(--bg);z-index:50;transform:translateX(102%);visibility:hidden;transition:transform .3s,visibility .3s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.drawer.on{transform:none;visibility:visible}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.db{flex:1;overflow:auto;padding:14px 18px}
+.it{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.it .t{flex:1}.q{display:flex;align-items:center;gap:8px}
+.q button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--card)}
+.gbox{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.gbox label.sw{display:flex;gap:10px;align-items:center;font-weight:600}
+.gf{display:none;margin-top:12px;gap:10px;flex-direction:column}
+.gf.on{display:flex}
+input,select,textarea{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.df{padding:14px 18px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.tot{display:flex;justify-content:space-between;font-weight:600;margin-bottom:10px}
+.df .btn{width:100%}
+.empty{color:var(--mut);text-align:center;padding:40px 0}
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.on{display:flex}
+.modal div{background:var(--card);border-radius:16px;padding:28px;max-width:400px;text-align:center}
+@media(max-width:760px){.logo{margin-inline-end:0}header nav{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;gap:16px;font-size:14px}.hero .wrap,.story .wrap,.gift .wrap,.rev{grid-template-columns:1fr}.stage{min-height:300px}.hero{padding-top:44px}}
+.tools{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}.tools input{flex:1;min-width:180px}.tools select{width:auto}.err{color:#b3392f;font-size:13px;display:none;margin-top:-6px}.err.on{display:block}.sh{font-size:14px;margin-bottom:6px}.bar{height:6px;background:var(--line);border-radius:9px;overflow:hidden;margin-bottom:14px}.bar i{display:block;height:100%;background:var(--flame);transition:width .3s}.rm{border:0;background:none;color:var(--mut);font-size:13px;text-decoration:underline}.toast{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom,0px));inset-inline:16px;max-width:380px;margin-inline:auto;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;z-index:70;display:flex;justify-content:space-between;gap:10px;align-items:center;opacity:0;transform:translateY(20px);pointer-events:none;transition:.25s}.toast.on{opacity:1;transform:none;pointer-events:auto}.toast button{background:none;border:0;color:inherit;font-weight:600;text-decoration:underline}.add,.chip,.q button{min-height:40px}.q button{min-width:40px}@media(prefers-reduced-motion:reduce){.flame{animation:none}html{scroll-behavior:auto}.drawer{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#top">وهج</a>
+<nav><a href="#shop">المتجر</a><a href="#gift">الهدايا</a><a href="#story">قصتنا</a><a href="#rev">آراء العملاء</a></nav>
+<button class="cartbtn" id="open" aria-label="فتح السلة">السلة (<span id="cnt">0</span>)</button>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+<div>
+<h1>شمعة واحدة تغيّر جوّ المكان كله</h1>
+<p>شموع صبّ يدوي بشمع الصويا وزيوت عطرية نقية. اختر عطرك، أو أرسلها هدية جاهزة بتغليف وبطاقة بخط يدك.</p>
+<a class="btn" href="#shop">تسوّق الشموع</a><a class="btn ghost" href="#gift">أرسلها هدية</a>
+</div>
+<div class="stage"><div class="big"><i class="wick"></i><i class="flame"></i><span class="lbl">وهج</span></div></div>
+</div></div>
+
+<section id="shop"><div class="wrap">
+<h2>شموعنا</h2>
+<p class="sub">كل شمعة تُصبّ في دفعات صغيرة وتُترك لتنضج أسبوعين قبل الشحن.</p>
+<div class="tools"><input id="q" type="search" placeholder="ابحث عن عطر أو اسم" aria-label="بحث"><select id="so" aria-label="الترتيب"><option value="">الترتيب الافتراضي</option><option value="a">الأقل سعرًا</option><option value="d">الأعلى سعرًا</option></select></div><div class="filters" id="filters" role="group" aria-label="تصفية حسب النوع"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section class="gift" id="gift"><div class="wrap">
+<h2>أرسلها هدية بدون عناء</h2>
+<p class="sub">فعّل خيار «هدية» في السلة، ونتولى الباقي: نخفي السعر، ونرفق بطاقتك، ونوصلها في اليوم الذي تختاره.</p>
+<div class="gi"><h3>تغليف فاخر</h3><p>صندوق مبطّن بورق مصنوع من مواد معاد تدويرها، مع شريط قماش.</p></div>
+<div class="gi"><h3>بطاقة برسالتك</h3><p>اكتب رسالتك وتُطبع على بطاقة سميكة وتوضع داخل الصندوق.</p></div>
+<div class="gi"><h3>توصيل في موعد محدد</h3><p>اختر تاريخ التسليم، ونرسل للمستلم إشعارًا دون ذكر السعر أو اسمك إن رغبت.</p></div>
+<div style="grid-column:1/-1"><button class="btn" id="giftgo">جهّز طلب هدية</button></div></div></section>
+
+<section class="story" id="story"><div class="wrap">
+<div>
+<h2>بدأت من مطبخ صغير</h2>
+<p>بدأت القصة عندما أرادت مؤسسة وهج هدية لوالدتها فلم تجد شمعة بعطر يشبه بيت الجدّة: عود دافئ، وهيل، وقليل من الورد. فجرّبت في مطبخها عشرات الخلطات حتى استقرّت على الأولى.</p>
+<p>اليوم ما زلنا نصبّ كل شمعة يدويًا بدفعات صغيرة، ونستخدم شمع الصويا الذي يحترق ببطء ودون سخام، وفتائل قطنية، وأوعية زجاج يمكن إعادة استخدامها.</p>
+<p>هدفنا بسيط: أن تشعل شمعة فتشعر أنك في أحسن مكان.</p>
+</div>
+<div class="stats"><div><b>100%</b>شمع صويا طبيعي</div><div><b>45 ساعة</b>متوسط زمن الاحتراق</div><div><b>14 يومًا</b>نضج كل دفعة قبل الشحن</div><div><b>+12,000</b>شمعة وصلت لأصحابها</div></div>
+</div></section>
+
+<section id="rev" style="padding-top:0"><div class="wrap">
+<h2>ماذا قالوا</h2><p class="sub">&nbsp;</p>
+<div class="rev">
+<blockquote>وصلت هدية لصديقتي في موعدها بالضبط، والبطاقة كانت جميلة جدًا.<cite>نورة، الرياض</cite></blockquote>
+<blockquote>عطر العود والهيل ثابت في الغرفة لساعات، ولا يسبب لي صداعًا كالشموع الأخرى.<cite>خالد، جدة</cite></blockquote>
+<blockquote>طلبت مجموعة لحفل زواجي ووزعتها هدايا للضيوف، والتغليف كان ممتازًا.<cite>ريم، الدمام</cite></blockquote>
+</div></div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 وهج. جميع الحقوق محفوظة.</span><span>الشحن مجاني للطلبات فوق 250 ر.س · الاستبدال خلال 7 أيام</span></div></footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="سلة التسوق" aria-hidden="true">
+<div class="dh"><h3>سلتك</h3><button id="close" class="chip" aria-label="إغلاق">إغلاق</button></div>
+<div class="db"><div id="ship"></div><div id="items"></div><div class="gbox" id="gbox" hidden><label class="sw"><input type="checkbox" id="gt" style="width:auto"> هذا الطلب هدية</label><div class="gf" id="gf"><label>اسم المستلم<input id="rn" autocomplete="name"></label><span class="err" id="e1">اكتب اسم المستلم.</span><label>رقم جوال المستلم<input id="rp" type="tel" inputmode="tel"></label><span class="err" id="e2">اكتب رقم جوال صحيح (9 أرقام على الأقل).</span><label>التغليف<select id="wr"><option value="0">صندوق أساسي (مجاني)</option><option value="15">صندوق فاخر مع شريط (+15 ر.س)</option></select></label><label>رسالة على البطاقة <small id="cc">0/200</small><textarea id="msg" rows="3" maxlength="200" placeholder="مثال: كل عام وأنتِ أجمل"></textarea></label><label>تاريخ التسليم<input id="dt" type="date"></label><span class="err" id="e3">اختر تاريخ التسليم.</span><label class="sw" style="font-weight:400"><input type="checkbox" id="hp" style="width:auto" checked> إخفاء السعر عن المستلم</label><label class="sw" style="font-weight:400"><input type="checkbox" id="an" style="width:auto"> إرسالها باسم مجهول</label></div></div></div>
+<div class="df" id="foot" hidden>
+<div class="tot"><span>المجموع</span><span id="sum"></span></div>
+<button class="btn" id="buy">إتمام الطلب</button>
+</div>
+</aside>
+<div class="modal" id="modal"><div><h3 id="mt">تم استلام طلبك</h3><p id="mp" style="color:var(--mut);margin:10px 0 18px"></p><button class="btn" id="mc">حسنًا</button></div></div>
+
+<script>
+var P=[
+{n:"عود وهيل",c:"خشبية",p:89,s:"عود، هيل، عنبر",h:45,col:"#b98a5e"},
+{n:"مسك الليل",c:"خشبية",p:95,s:"مسك أبيض، صندل",h:50,col:"#8d6b82"},
+{n:"ورد الطائف",c:"زهرية",p:85,s:"ورد، فانيلا، توت",h:40,col:"#d98aa0"},
+{n:"ياسمين صباحي",c:"زهرية",p:79,s:"ياسمين، حمضيات",h:40,col:"#efd9a4"},
+{n:"قهوة وكراميل",c:"حلوة",p:75,s:"بن محمص، كراميل",h:35,col:"#7a5238"},
+{n:"فانيلا وقرفة",c:"حلوة",p:72,s:"فانيلا، قرفة، سكر بني",h:35,col:"#e5c493"},
+{n:"نعناع وليمون",c:"منعشة",p:69,s:"نعناع، ليمون، شاي أخضر",h:30,col:"#8fb59a"},
+{n:"بحر وملح",c:"منعشة",p:74,s:"نسيم بحري، خزامى",h:35,col:"#8fb0c8"},
+{n:"مجموعة التجربة (3 شموع صغيرة)",c:"هدايا",p:129,s:"ثلاثة عطور مختارة",h:36,col:"#c9a77c"},
+{n:"صندوق الامتنان",c:"هدايا",p:189,s:"شمعة كبيرة + عود ثقاب + مطفئة",h:60,col:"#a97c8c"}
+];
+function ld(){try{return JSON.parse(localStorage.getItem("wahaj"))||{}}catch(e){return{}}}
+var cart=ld(),gift=false,$=function(i){return document.getElementById(i)},cur="الكل",q="",so="",last=null,FREE=250,tt;
+Object.keys(cart).forEach(function(k){if(!P[k])delete cart[k]});
+var cats=["الكل"].concat(P.map(function(x){return x.c}).filter(function(v,i,a){return a.indexOf(v)==i}));
+function money(v){return v+" ر.س"}
+function sv(){try{localStorage.setItem("wahaj",JSON.stringify(cart))}catch(e){}}
+function draw(){
+ $("filters").innerHTML=cats.map(function(c){return '<button class="chip" aria-pressed="'+(c==cur)+'" data-c="'+c+'">'+c+'</button>'}).join("");
+ var L=P.map(function(x,i){return{x:x,i:i}}).filter(function(o){return(cur=="الكل"||o.x.c==cur)&&(o.x.n+o.x.s).indexOf(q)>-1});
+ if(so=="a")L.sort(function(a,b){return a.x.p-b.x.p});if(so=="d")L.sort(function(a,b){return b.x.p-a.x.p});
+ $("grid").innerHTML=L.length?L.map(function(o){var x=o.x;
+ return '<article class="p"><div class="pic" style="background:linear-gradient(var(--hero),'+x.col+'40)"><div class="mini" style="height:'+((70+x.h)*.6)+'px;background:'+x.col+'"></div></div><div class="b"><h3>'+x.n+'</h3><small>'+x.s+'</small><small>يحترق نحو '+x.h+' ساعة</small><div class="row"><span class="price">'+money(x.p)+'</span><button class="add" data-i="'+o.i+'" aria-label="أضف '+x.n+' إلى السلة">أضف للسلة</button></div></div></article>'}).join(""):'<p class="empty" style="grid-column:1/-1">لا توجد شموع مطابقة. غيّر كلمة البحث أو اختر «الكل».</p>';
+}
+function sub(){return Object.keys(cart).reduce(function(s,k){return s+P[k].p*cart[k]},0)}
+function wr(){return gift?+$("wr").value:0}
+function render(){
+ var ks=Object.keys(cart),n=ks.reduce(function(s,k){return s+cart[k]},0),s=sub(),left=FREE-s;
+ $("cnt").textContent=n;$("foot").hidden=!n;$("gbox").hidden=!n;
+ $("items").innerHTML=ks.length?ks.map(function(k){return '<div class="it"><div class="t"><b>'+P[k].n+'</b><br><small>'+money(P[k].p)+'</small></div><div class="q"><button data-d="-1" data-k="'+k+'" aria-label="إنقاص '+P[k].n+'">−</button><span>'+cart[k]+'</span><button data-d="1" data-k="'+k+'" aria-label="زيادة '+P[k].n+'">+</button></div><button class="rm" data-r="'+k+'" aria-label="حذف '+P[k].n+'">حذف</button></div>'}).join(""):'<p class="empty">سلتك فارغة. اختر شمعتك الأولى من المتجر.</p><div style="text-align:center"><button class="btn" data-go="1">تصفّح الشموع</button></div>';
+ $("ship").innerHTML=n?'<p class="sh">'+(left>0?'أضف '+money(left)+' للحصول على شحن مجاني':'شحن طلبك مجاني')+'</p><div class="bar"><i style="width:'+Math.min(100,s/FREE*100)+'%"></i></div>':"";
+ $("sum").textContent=money(s+wr());sv();
+}
+function setGift(g){gift=g;$("gt").checked=g;$("gf").classList.toggle("on",g);render()}
+function toast(m,c){clearTimeout(tt);$("toast").innerHTML=m+(c?' <button data-open="1">عرض السلة</button>':"");$("toast").classList.add("on");tt=setTimeout(function(){$("toast").classList.remove("on")},3200)}
+function open(o){var d=$("drawer");d.classList.toggle("on",o);$("ov").classList.toggle("on",o);d.setAttribute("aria-hidden",!o);document.body.style.overflow=o?"hidden":"";
+ if(o){last=document.activeElement;$("close").focus();$("toast").classList.remove("on")}else if(last)last.focus()}
+function err(id,on){$(id).classList.toggle("on",on);return on}
+document.addEventListener("click",function(e){var t=e.target,d=t.dataset;
+ if(d.c){cur=d.c;draw()}
+ if(d.i){cart[d.i]=(cart[d.i]||0)+1;render();toast("أُضيفت «"+P[d.i].n+"» إلى السلة",1)}
+ if(d.d){var k=d.k;cart[k]+=+d.d;if(cart[k]<1)delete cart[k];render()}
+ if(d.r){delete cart[d.r];render()}
+ if(d.open)open(true);
+ if(d.go){open(false);location.hash="shop"}
+ if(t.id=="open")open(true);if(t.id=="close"||t.id=="ov")open(false);
+ if(t.id=="mc")$("modal").classList.remove("on");
+ if(t.id=="giftgo"){if(Object.keys(cart).length){setGift(true);open(true)}else{setGift(true);toast("اختر شمعة أولًا، وسنجهّزها كهدية.");location.hash="shop"}}
+ if(t.id=="buy"){var m="سنرسل لك تأكيد الطلب. المجموع: "+$("sum").textContent+".";
+  if(gift){var a=err("e1",!$("rn").value.trim()),b=err("e2",$("rp").value.replace(/\D/g,"").length<9),c=err("e3",!$("dt").value);
+   if(a||b||c){$(a?"rn":b?"rp":"dt").focus();return}
+   m="طلب هدية إلى "+$("rn").value.trim()+" بتاريخ "+$("dt").value+". "+m}
+  $("mp").textContent=m;cart={};setGift(false);open(false);$("modal").classList.add("on")}
+});
+document.addEventListener("change",function(e){var i=e.target.id;
+ if(i=="gt")setGift(e.target.checked);if(i=="wr")render();
+ if(i=="so"){so=e.target.value;draw()}});
+document.addEventListener("input",function(e){var i=e.target.id;
+ if(i=="q"){q=e.target.value.trim();draw()}
+ if(i=="msg")$("cc").textContent=e.target.value.length+"/200";
+ if(i=="rn")err("e1",0);if(i=="rp")err("e2",0);if(i=="dt")err("e3",0)});
+document.addEventListener("keydown",function(e){if(e.key=="Escape"){open(false);$("modal").classList.remove("on")}});
+var x=new Date();x.setDate(x.getDate()+2);$("dt").min=x.toISOString().slice(0,10);
+draw();render();
+</script>
+</body>
+</html>
